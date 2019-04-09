@@ -107,8 +107,27 @@ public class GameDAO {
             addQuestion(question);
         }
     }
-    public Rule getRule (long id){
-            return em.find(Rule.class, id);
+     public void addRule(Rule rule) {
+
+        String query = "select count(r.id) from Rule r";
+        String query1 = "select r.id from Rule r";
+        Long count = (Long) em.createQuery(query).getSingleResult();
+        if (!(count.equals(0L)) == true) {
+            Long id = (Long) em.createQuery(query1).getSingleResult();
+            Rule r = em.find(Rule.class, id);
+            em.remove(r);
+            em.merge(rule);
+        } else {
+            em.merge(rule);
+        }
+    }
+
+    public void addRules(List<Rule> rules) {
+        addRule(rules.get(rules.size() - 1));
+    }
+    public Rule getRule (){
+        Query query = em.createQuery("FROM Rule");
+        return (Rule) query.getSingleResult();
     }
 
     public String getAnswers(){
@@ -126,9 +145,9 @@ public class GameDAO {
         String sQuery = "Update PlayerAnswerState Set checkedIsCorrect = :correct where id = :id";
         Query query = em.createQuery(sQuery).setParameter("id", id)
                 .setParameter("correct", correct);
-        query.executeUpdate();
-=======
-    public void setQuizTimeout(long timeout){
+        query.executeUpdate();}
+
+        public void setQuizTimeout(long timeout){
         Query selectQuery = em.createQuery(SET_QUESTIONS_TIMEOUT);
         selectQuery.setParameter("timeout", timeout);
         selectQuery.executeUpdate();

@@ -18,6 +18,15 @@ function addPlayers() {
    })
 }
 
+function addRules() {
+   var rulesData = $('#rulesData').val();
+   $.ajax({
+       type: "POST",
+       url: "rest/admin/addRules",
+       data: rulesData,
+       contentType: 'text/plain'
+   })
+}
 function setQuizTimeout() {
 
     var timeoutValue = $('#timeoutValue').val();

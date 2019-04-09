@@ -29,11 +29,11 @@ public class PlayerAnswerState implements Serializable {
     @Size(min = 1, max = 2000, message = "1-2000 letters and spaces")
     private String answer;
 
-    boolean isCorrect;
+    private boolean isCorrect;
 
-    int checkedIsCorrect;
+    private int checkedIsCorrect = 0;
 
-    long expiresOn;
+    private long expiresOn;
 
     public long getId() {
         return Id;

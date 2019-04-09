@@ -1,6 +1,7 @@
 package com.xartifex.simplequiz.util;
 
 import com.xartifex.simplequiz.model.Question;
+import com.xartifex.simplequiz.model.Rule;
 import com.xartifex.simplequiz.user.UserInfo;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
@@ -63,6 +64,12 @@ public class Util {
             }
         }
         return users;
+    }
+
+        public static List getRules(String data){
+       List rules = new ArrayList<>(); 
+       rules.add(new Rule(400003L,data));
+       return rules;
     }
 
     public static String encode(String text) {

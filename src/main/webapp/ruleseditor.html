@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Rules' Editor</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/simplequiz/style.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <script type="text/javascript" src="js/lib/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="js/simple-quiz-admin.js"></script>
+     <script type="text/javascript">        
+         $( document ).ready( function() {
+            $('#newrules').submit(function(event) {
+                event.preventDefault();
+                addRules();
+            });
+        });
+    </script>
+    </head>
+    <body>
+        <form id="newrules">
+    <input type="submit">
+</form>
+<br>
+<textarea id="rulesData" rows="8" cols="100" name="comment" form="newrules">
+Привет пользователь. На каждый вопрос тебе будет дано ${SECONDS_PER_QUESTION} секунд. 
+После этого пройди по ${SOME_EXTERNAL_LINK} и ты увидишь результаты.
+</textarea>
+    </body>
+</html>
